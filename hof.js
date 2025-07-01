@@ -5,7 +5,7 @@ what is higher order function?
 A higher-order function is a function that can take another function as an argument, 
 return a function, or both. It's a powerful concept in JavaScript that helps in writing clean, 
 reusable code—common examples include map, filter, and reduce.
-*/ 
+*/ /*** */
 
 const values=[1,2,3,4];
 
