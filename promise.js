@@ -1,3 +1,18 @@
+/* what is promise ?
+The Promise object represents the eventual completion (or failure) of an asynchronous operation 
+and its resulting value .
+It acts as a placeholder for a value that is not yet known, 
+but will become available at some point in the future.
+
+A Promise is in one of these states:
+
+pending: initial state, neither fulfilled nor rejected.
+fulfilled: meaning that the operation was completed successfully.
+rejected: meaning that the operation failed.
+
+
+*/
+
 console.log('--- Start of script ---');
 
 // Function that returns a Promise that will resolve after 2 seconds
