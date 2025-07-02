@@ -71,3 +71,42 @@ console.log(an1)
 // console.log(calculate(values,area));
 // console.log(calculate(values,diameter));
 // console.log(calculate(values,circumference));
+
+
+
+
+const arr=[5,4,3,2,1]
+console.log("For loop")
+arr.forEach(function(val,ind){
+    console.log(val,ind);
+})
+console.log("Reduce");
+let a=arr.reduce(function(ans,curr){
+    ans+=curr;
+    return ans;
+},0
+)
+console.log(a);
+console.log("filter");
+let b=arr.filter((val)=>val%2==0);
+console.log(b);
+console.log("map");
+let c=arr.map(function(val){
+    val*=2;
+    return val;
+})
+console.log(c);
+console.log("without using Higher Order Functions")
+function mul(val){
+    return val*2;
+}
+
+let result=[];
+for(let i=0;i<arr.length;i++){
+    result.push(mul(arr[i]));
+}
+console.log(result);
+
+
+
+
