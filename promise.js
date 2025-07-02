@@ -11,6 +11,38 @@ fulfilled: meaning that the operation was completed successfully.
 rejected: meaning that the operation failed.
 
 
+Based on my Understanding:
+Promise is synchronous 
+it will executed in the callstack 
+when the resolve line is reached, it will put the promise's associated .then() in the microtask queue and marks the promise as fullfilled
+then other synchronous code is executed
+eventloop will process the rest.
+
+
+var p = new Promise((resolve, reject) => {
+  console.log("State: pending");
+  setTimeout(function(){
+      resolve("Done");
+  },2000);
+  console.log("After resolve call");
+});
+
+console.log("hIii")
+console.log(p); // shows fulfilled with value in devtools (timing matters!)
+setTimeout(()=>console.log(p),3000);
+p.then((r)=>console.log(r));
+
+OUTPUT:
+State: pending
+After resolve call
+hIii
+Promise { <pending> }
+Done
+Promise { 'Done' }
+
+
+
+
 */
 
 console.log('--- Start of script ---');
