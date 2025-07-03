@@ -5,9 +5,7 @@ In async/await, when you await, the rest of the function pauses (i.e., the remai
 Let’s break this down.
 
 ✅ Case 1: Using Promise directly
-js
-Copy
-Edit
+
 console.log("Start");
 
 new Promise((resolve) => {
@@ -20,9 +18,6 @@ new Promise((resolve) => {
 
 console.log("End");
 🧾 Output:
-pgsql
-Copy
-Edit
 Start
 Inside Promise - Before resolve
 Inside Promise - After resolve
@@ -35,9 +30,7 @@ The Promise executor runs synchronously, so both logs before and after resolve()
 The .then(...) is scheduled as a microtask, which runs after the current call stack is empty.
 
 ✅ Case 2: Using async/await
-js
-Copy
-Edit
+
 console.log("Start");
 
 async function run() {
@@ -54,9 +47,6 @@ run();
 
 console.log("End");
 🧾 Output:
-pgsql
-Copy
-Edit
 Start
 Inside Promise - Before resolve
 Inside Promise - After resolve
