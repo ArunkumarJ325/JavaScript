@@ -1,0 +1,69 @@
+In Promise, the code after resolve() inside the executor runs immediately.
+
+In async/await, when you await, the rest of the function pauses (i.e., the remaining lines after await don't run immediately).
+
+Let’s break this down.
+
+✅ Case 1: Using Promise directly
+js
+Copy
+Edit
+console.log("Start");
+
+new Promise((resolve) => {
+  console.log("Inside Promise - Before resolve");
+  resolve("Done");
+  console.log("Inside Promise - After resolve");
+}).then((value) => {
+  console.log("Inside then:", value);
+});
+
+console.log("End");
+🧾 Output:
+pgsql
+Copy
+Edit
+Start
+Inside Promise - Before resolve
+Inside Promise - After resolve
+End
+Inside then: Done
+🔍 Explanation:
+
+The Promise executor runs synchronously, so both logs before and after resolve() are executed immediately.
+
+The .then(...) is scheduled as a microtask, which runs after the current call stack is empty.
+
+✅ Case 2: Using async/await
+js
+Copy
+Edit
+console.log("Start");
+
+async function run() {
+  const data = await new Promise((resolve) => {
+    console.log("Inside Promise - Before resolve");
+    resolve("Done");
+    console.log("Inside Promise - After resolve");
+  });
+
+  console.log("After await:", data);
+}
+
+run();
+
+console.log("End");
+🧾 Output:
+pgsql
+Copy
+Edit
+Start
+Inside Promise - Before resolve
+Inside Promise - After resolve
+End
+After await: Done
+🔍 Explanation:
+
+await pauses the function right after the await line.
+
+The rest (console.log("After await: Done")) is put in the microtask queue and waits for the call stack to clear.
