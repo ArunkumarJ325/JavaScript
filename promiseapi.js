@@ -8,16 +8,16 @@
  *  if anyone of them fails, it will quickly return error, The other promises results are not ignored, just their results are ignored.
  *  Example code(You can practice all the promise api in this) */
     const p1= new Promise((resolve,reject)=>{
-        setTimeout(()=>reject("success p1"),3000);
+        setTimeout(()=>resolve("success p1"),3000);
     });
     const p2= new Promise((resolve,reject)=>{
         setTimeout(()=>reject("success p2"),1000);
     })
     const p3= new Promise((resolve,reject)=>{
-        setTimeout(()=>reject("success p3"),2000);
+        setTimeout(()=>resolve("success p3"),2000);
     })
 
-    Promise.any([p1,p2,p3]).then((res)=>{
+    Promise.race([p1,p2,p3]).then((res)=>{
         console.log(res);
     })
     .catch((err)=>{
@@ -67,3 +67,12 @@
     If all of them fails then it will give you aggregate of error i.e array of errors.
 
  */
+
+/*
+How to answer it interview 
+
+.any: It will wait for the first settled success,i.e first resolved promise.
+
+
+
+*/
